@@ -1,6 +1,6 @@
 {
     "exportFormatVersion": 2,
-    "exportTime": "2017-08-23 07:08:12",
+    "exportTime": "2017-10-30 03:23:07",
     "containerVersion": {
         "path": "accounts/1721474773/containers/7412425/versions/0",
         "accountId": "1721474773",
@@ -15,7 +15,7 @@
             "usageContext": [
                 "WEB"
             ],
-            "fingerprint": "1503472085095",
+            "fingerprint": "1504254414749",
             "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/1721474773/containers/7412425/workspaces?apiLink=container"
         },
         "tag": [
@@ -200,6 +200,36 @@
                 ],
                 "fingerprint": "1503395249271",
                 "parentFolderId": "5",
+                "tagFiringOption": "ONCE_PER_EVENT"
+            },
+            {
+                "accountId": "1721474773",
+                "containerId": "7412425",
+                "tagId": "7",
+                "name": "Tag preview task",
+                "type": "ua",
+                "parameter": [
+                    {
+                        "type": "BOOLEAN",
+                        "key": "overrideGaSettings",
+                        "value": "true"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackType",
+                        "value": "TRACK_PAGEVIEW"
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "gaSettings",
+                        "value": "{{Var common settings}}"
+                    }
+                ],
+                "fingerprint": "1504254108248",
+                "firingTriggerId": [
+                    "2147479553"
+                ],
+                "parentFolderId": "29",
                 "tagFiringOption": "ONCE_PER_EVENT"
             },
             {
@@ -432,12 +462,38 @@
                     {
                         "type": "BOOLEAN",
                         "key": "setTrackerName",
-                        "value": "false"
+                        "value": "true"
                     },
                     {
                         "type": "BOOLEAN",
                         "key": "useDebugVersion",
                         "value": "false"
+                    },
+                    {
+                        "type": "LIST",
+                        "key": "fieldsToSet",
+                        "list": [
+                            {
+                                "type": "MAP",
+                                "map": [
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "fieldName",
+                                        "value": "customTask"
+                                    },
+                                    {
+                                        "type": "TEMPLATE",
+                                        "key": "value",
+                                        "value": "{{Var customTask}}"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "TEMPLATE",
+                        "key": "trackerName",
+                        "value": "myTracker"
                     },
                     {
                         "type": "BOOLEAN",
@@ -531,7 +587,7 @@
                         "value": "{{Var tracking ID}}"
                     }
                 ],
-                "fingerprint": "1503471634355",
+                "fingerprint": "1504253405706",
                 "parentFolderId": "5"
             },
             {
@@ -549,6 +605,22 @@
                 ],
                 "fingerprint": "1503394959397",
                 "parentFolderId": "5"
+            },
+            {
+                "accountId": "1721474773",
+                "containerId": "7412425",
+                "variableId": "18",
+                "name": "Var customTask",
+                "type": "jsm",
+                "parameter": [
+                    {
+                        "type": "TEMPLATE",
+                        "key": "javascript",
+                        "value": "function () {\n  return function () {\n    var tracker = ga.getByName('myTracker');\n    var clientId = tracker.get('clientId');\n    tracker.set('dimension1', clientId);\n\tconsole.log('Client ID is : ' + clientId);    \n  }\n}"
+                    }
+                ],
+                "fingerprint": "1504254402497",
+                "parentFolderId": "29"
             },
             {
                 "accountId": "1721474773",
@@ -727,14 +799,14 @@
                                     {
                                         "type": "TEMPLATE",
                                         "key": "value",
-                                        "value": "UA-1234567-88"
+                                        "value": "UA-24471868-5"
                                     }
                                 ]
                             }
                         ]
                     }
                 ],
-                "fingerprint": "1503472046581",
+                "fingerprint": "1504251540430",
                 "parentFolderId": "5"
             },
             {
@@ -869,6 +941,13 @@
                 "folderId": "5",
                 "name": "GTM sample",
                 "fingerprint": "1503472062819"
+            },
+            {
+                "accountId": "1721474773",
+                "containerId": "7412425",
+                "folderId": "29",
+                "name": "custom task",
+                "fingerprint": "1504250494450"
             }
         ],
         "builtInVariable": [
